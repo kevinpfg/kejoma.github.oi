@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEJOMA - Tienda Deportiva</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo-empresa">
+    <img src="img logo kejoma 1.jpg" alt="Logo">
+  </div>
+
+  <div class="texto-empresa">
+    <h1>⚽ KEJOMA ⚽</h1>
+    <p>Tu pasión, nuestro equipo.</p>
+  </div>
+
+  <!-- BUSCADOR -->
+  <input type="text" id="buscador" placeholder="Buscar..." onkeyup="buscarProducto()">
+
+  <!-- MENU -->
+  <nav class="nav">
+    <ul id="menu">
+      <li><a href="#" onclick="filtrar('all')">TODOS</a></li>
+      <li><a href="#" onclick="filtrar('maxsport')">MAX SPORT</a></li>
+      <li><a href="#" onclick="filtrar('nike')">NIKE</a></li>
+      <li><a href="#" onclick="filtrar('joma')">JOMA</a></li>
+      <li><a href="#" onclick="filtrar('adidas')">ADIDAS</a></li>
+      <li><a href="#" onclick="filtrar('kejoma')">KEJOMA JR</a></li>
+    </ul>
+  </nav>
+
+  <!-- DERECHA -->
+  <div class="acciones-header">
+
+    <!-- CARRITO -->
+    <div class="carrito-top" onclick="toggleCarrito()">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="contador">0</span>
+
+      <div id="carrito-desplegable" class="carrito-desplegable">
+        <h3>🛒 Tu carrito</h3>
+        <ul id="lista-carrito"></ul>
+        <p>Total: $<span id="total">0</span></p>
+
+        <button onclick="vaciarCarrito()">Vaciar</button>
+        <button onclick="comprarWhatsApp()">WhatsApp</button>
+        <button onclick="pagarNequi()">Nequi</button>
+        <button onclick="pagarPayPal()">PayPal</button>
+        <button onclick="pagarWeb()">Pagar aquí</button>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <button onclick="toggleLogin()" class="btn-login">
+      <i class="fas fa-user"></i>
+    </button>
+  </div>
+
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</header>
+<!-- LOGIN -->
+<div id="login-form-container">
+  <h3>Iniciar Sesión</h3>
+  <input type="email" id="correo" placeholder="Correo">
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="login()">Entrar</button>
+  <p id="mensaje-login"></p>
+</div>
+
+<!-- CARRUSEL -->
+<div class="carousel-container">
+  <div class="carousel-slide" id="slider">
+    <img src="IMG 1.webp">
+    <img src="IMG 2.webp">
+    <img src="IMG 3.gif">
+    <img src="IMG 4.webp">
+    <img src="IMG 5.gif">
+  </div>
+  <section class="marca maxsport">
+
+  <button class="carousel-button prev" onclick="moveSlide(-1)">❮</button>
+  <button class="carousel-button next" onclick="moveSlide(1)">❯</button>
+</div>
+<section class="marca maxsport">
+<h2>MAX SPORT</h2>
+<div class="productos-contenedor">
+
+<div class="producto">
+<img src="img max 1.webp">
+<div class="info"><h3>MAX SPORT Pro</h3><p class="precio">$150.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Pro</h4><p>Alto rendimiento y excelente amortiguación.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Pro',150000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Pro')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 2.webp">
+<div class="info"><h3>MAX SPORT Speed</h3><p class="precio">$160.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Speed</h4><p>Ligereza y velocidad para entrenamientos intensos.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Speed',160000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Speed')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 3.jpg">
+<div class="info"><h3>MAX SPORT Run</h3><p class="precio">$155.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Run</h4><p>Ideales para correr con comodidad.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Run',155000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Run')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 4.webp">
+<div class="info"><h3>MAX SPORT Elite</h3><p class="precio">$165.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Elite</h4><p>Diseño premium con máxima comodidad.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Elite',165000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Elite')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 5.webp">
+<div class="info"><h3>MAX SPORT Chart</h3><p class="precio">$165.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Chart</h4><p>Estilo urbano y resistente.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Chart',165000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Chart')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 6.webp">
+<div class="info"><h3>MAX SPORT Running</h3><p class="precio">$155.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Running</h4><p>Perfectas para largas distancias.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Running',155000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Running')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 7.webp">
+<div class="info"><h3>MAX SPORT Retro</h3><p class="precio">$165.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Retro</h4><p>Diseño clásico con toque moderno.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Retro',165000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Retro')">❤️ Favorito</button>
+</div></div>
+
+<div class="producto">
+<img src="img max 8.webp">
+<div class="info"><h3>MAX SPORT Retro Elite</h3><p class="precio">$165.000</p></div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay"><div class="overlay-content"><h4>MAX SPORT Retro Elite</h4><p>Versión premium con estilo retro.</p></div></div>
+<div class="acciones">
+<button onclick="agregarCarrito('MAX SPORT Retro Elite',165000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'MAX SPORT Retro Elite')">❤️ Favorito</button>
+</div></div>
+
+</div>
+</section>
+<section class="marca nike">
+ <section class="marca nike">
+<h2>NIKE</h2>
+
+<div class="productos-contenedor">
+
+<!-- 1 -->
+<div class="producto">
+<img src="img nike 1.jpg" alt="Nike Air">
+<div class="info">
+<h3>Nike Air</h3>
+<p class="precio">$180.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Air</h4>
+<p>Comodidad superior con tecnología Air para mayor amortiguación.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Air',180000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Air')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="producto">
+<img src="img nike 2.jpg" alt="Nike Zoom">
+<div class="info">
+<h3>Nike Zoom</h3>
+<p class="precio">$190.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Zoom</h4>
+<p>Máxima velocidad y respuesta en cada paso.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Zoom',190000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Zoom')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="producto">
+<img src="img nike 3.jpg" alt="Nike Run">
+<div class="info">
+<h3>Nike Run</h3>
+<p class="precio">$185.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Run</h4>
+<p>Perfectas para running con gran comodidad.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Run',185000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Run')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="producto">
+<img src="img nike 4.jpg" alt="Nike Pro">
+<div class="info">
+<h3>Nike Pro</h3>
+<p class="precio">$200.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Pro</h4>
+<p>Rendimiento profesional y diseño moderno.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Pro',200000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Pro')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="producto">
+<img src="img max 5.webp" alt="Nike Pro X">
+<div class="info">
+<h3>Nike Pro X</h3>
+<p class="precio">$200.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Pro X</h4>
+<p>Diseño avanzado con mayor estabilidad.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Pro X',200000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Pro X')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="producto">
+<img src="img max 6.webp" alt="Nike Run X">
+<div class="info">
+<h3>Nike Run X</h3>
+<p class="precio">$185.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Run X</h4>
+<p>Mayor ligereza para correr largas distancias.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Run X',185000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Run X')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="producto">
+<img src="img max 7.webp" alt="Nike Elite">
+<div class="info">
+<h3>Nike Elite</h3>
+<p class="precio">$200.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Elite</h4>
+<p>Modelo premium con máximo confort.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Elite',200000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Elite')">❤️ Favorito</button>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="producto">
+<img src="img max 8.webp" alt="Nike Ultra">
+<div class="info">
+<h3>Nike Ultra</h3>
+<p class="precio">$200.000</p>
+</div>
+<div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+<div class="overlay">
+<div class="overlay-content">
+<h4>Nike Ultra</h4>
+<p>Ultra ligeras con diseño moderno y deportivo.</p>
+</div>
+</div>
+<div class="acciones">
+<button onclick="agregarCarrito('Nike Ultra',200000)">Agregar</button>
+<button class="btn-fav" onclick="agregarFavoritoBtn(this,'Nike Ultra')">❤️ Favorito</button>
+</div>
+</div>
+
+</div>
+</section>
+<section class="marca joma">
+  <h2>JOMA</h2>
+
+  <div class="productos-contenedor">
+
+    <!-- 1 -->
+    <div class="producto">
+      <img src="img joma 1.webp" alt="JOMA Classic">
+
+      <div class="info">
+        <h3>JOMA Classic</h3>
+        <p class="precio">$220.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Classic</h4>
+          <p>Diseño clásico con excelente comodidad para uso diario y deportivo.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Classic',220000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Classic')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="producto">
+      <img src="img joma 2.webp" alt="JOMA Speed">
+
+      <div class="info">
+        <h3>JOMA Speed</h3>
+        <p class="precio">$210.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Speed</h4>
+          <p>Zapatillas ligeras diseñadas para velocidad y alto rendimiento.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Speed',210000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Speed')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="producto">
+      <img src="img joma 3.jpg" alt="JOMA TREDRI">
+
+      <div class="info">
+        <h3>JOMA TREDRI</h3>
+        <p class="precio">$195.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA TREDRI</h4>
+          <p>Gran resistencia y agarre, ideales para entrenamiento intenso.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA TREDRI',195000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA TREDRI')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="producto">
+      <img src="img joma 4.webp" alt="JOMA ASTRAL">
+
+      <div class="info">
+        <h3>JOMA ASTRAL</h3>
+        <p class="precio">$205.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA ASTRAL</h4>
+          <p>Combinación de estilo moderno y tecnología deportiva avanzada.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA ASTRAL',205000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA ASTRAL')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="producto">
+      <img src="img joma 5.jpg" alt="JOMA Elite Roca">
+
+      <div class="info">
+        <h3>JOMA Elite Roca</h3>
+        <p class="precio">$205.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Elite Roca</h4>
+          <p>Alta durabilidad para terrenos exigentes y uso prolongado.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Elite Roca',205000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Elite Roca')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="producto">
+      <img src="img joma 6.jpg" alt="JOMA Runner">
+
+      <div class="info">
+        <h3>JOMA Runner</h3>
+        <p class="precio">$195.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Runner</h4>
+          <p>Perfectas para correr con gran amortiguación y ligereza.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Runner',195000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Runner')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="producto">
+      <img src="img joma 7.webp" alt="JOMA Elite Pro">
+
+      <div class="info">
+        <h3>JOMA Elite Pro</h3>
+        <p class="precio">$205.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Elite Pro</h4>
+          <p>Rendimiento profesional con excelente soporte y estabilidad.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Elite Pro',205000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Elite Pro')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="producto">
+      <img src="img joma 8.jpeg" alt="JOMA Elite">
+
+      <div class="info">
+        <h3>JOMA Elite</h3>
+        <p class="precio">$205.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>JOMA Elite</h4>
+          <p>Modelo equilibrado entre comodidad, estilo y rendimiento.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('JOMA Elite',205000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'JOMA Elite')">❤️ Favorito</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="marca adidas">
+  <h2>Adidas</h2>
+
+  <div class="productos-contenedor">
+
+    <div class="producto">
+  <img src="img adidas 1.jpg" alt="Adidas Rpro">
+
+  <div class="info">
+    <h3>Adidas Rpro</h3>
+    <p class="precio">$170.900</p>
+
+    <div class="tallas">
+      <p>Tallas disponibles:</p>
+      <span>38</span>
+      <span>39</span>
+      <span>40</span>
+      <span>41</span>
+      <span>42</span>
+    </div>
+  </div>
+
+  <div class="overlay">
+    <div class="overlay-content">
+      <h4>Adidas Rpro</h4>
+      <p>Diseño deportivo con gran comodidad y estilo urbano.</p>
+    </div>
+  </div>
+
+  <div class="acciones">
+    <button onclick="agregarCarrito('Adidas Rpro',170900)">Agregar</button>
+    <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Rpro')">❤️ Favorito</button>
+  </div>
+</div>
+
+    <!-- 2 -->
+    <div class="producto">
+      <img src="img adidas 2.webp" alt="Adidas Run">
+
+      <div class="info">
+        <h3>Adidas Run</h3>
+        <p class="precio">$180.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Run</h4>
+          <p>Zapatillas ideales para correr con alto rendimiento.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Run',180000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Run')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="producto">
+      <img src="img adidas 3.jpg" alt="Adidas Saurio">
+
+      <div class="info">
+        <h3>Adidas Saurio</h3>
+        <p class="precio">$170.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Saurio</h4>
+          <p>Modelo resistente con estilo moderno y agresivo.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Saurio',170000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Saurio')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="producto">
+      <img src="img adidas 4.jpg" alt="Adidas Glass">
+
+      <div class="info">
+        <h3>Adidas Glass</h3>
+        <p class="precio">$175.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Glass</h4>
+          <p>Diseño elegante con comodidad para uso diario.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Glass',175000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Glass')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="producto">
+      <img src="img adidas 5.webp" alt="Adidas Classic">
+
+      <div class="info">
+        <h3>Adidas Classic</h3>
+        <p class="precio">$175.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Classic</h4>
+          <p>Estilo clásico con tecnología deportiva moderna.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Classic',175000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Classic')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="producto">
+      <img src="img adidas 6.jpg" alt="Adidas Sport">
+
+      <div class="info">
+        <h3>Adidas Sport</h3>
+        <p class="precio">$170.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Sport</h4>
+          <p>Perfectas para entrenamiento y actividad física.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Sport',170000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Sport')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="producto">
+      <img src="img adidas 7.jfif" alt="Adidas Air">
+
+      <div class="info">
+        <h3>Adidas Air</h3>
+        <p class="precio">$175.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Air</h4>
+          <p>Ligereza y comodidad para uso prolongado.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Air',175000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Air')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="producto">
+      <img src="img adidas 8.jpg" alt="Adidas Boost">
+
+      <div class="info">
+        <h3>Adidas Boost</h3>
+        <p class="precio">$175.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>Adidas Boost</h4>
+          <p>Máxima amortiguación y energía en cada paso.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('Adidas Boost',175000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'Adidas Boost')">❤️ Favorito</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="marca kejoma">
+  <h2>KEJOMA JR</h2>
+
+  <div class="productos-contenedor">
+
+    <!-- 1 -->
+    <div class="producto">
+      <img src="img kejoma 1.png" alt="KEJOMA JR Pro">
+
+      <div class="info">
+        <h3>KEJOMA JR Pro</h3>
+        <p class="precio">$170.900</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Pro</h4>
+          <p>Modelo profesional con gran comodidad y rendimiento deportivo.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Pro',170900)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Pro')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="producto">
+      <img src="img kejoma 2.png" alt="KEJOMA JR Fulty">
+
+      <div class="info">
+        <h3>KEJOMA JR Fulty</h3>
+        <p class="precio">$180.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Fulty</h4>
+          <p>Diseño moderno con excelente soporte y estilo urbano.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Fulty',180000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Fulty')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="producto">
+      <img src="img kejoma 3.png" alt="KEJOMA JR Good">
+
+      <div class="info">
+        <h3>KEJOMA JR Good</h3>
+        <p class="precio">$140.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Good</h4>
+          <p>Modelo cómodo y económico para uso diario.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Good',140000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Good')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="producto">
+      <img src="img kejoma 4.png" alt="KEJOMA JR Freestyler">
+
+      <div class="info">
+        <h3>KEJOMA JR Freestyler</h3>
+        <p class="precio">$160.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Freestyler</h4>
+          <p>Diseñado para estilo libre y movimiento constante.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Freestyler',160000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Freestyler')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="producto">
+      <img src="img kejoma 5.png" alt="KEJOMA JR MKJ">
+
+      <div class="info">
+        <h3>KEJOMA JR MKJ</h3>
+        <p class="precio">$175.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR MKJ</h4>
+          <p>Modelo potente con diseño moderno y resistente.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR MKJ',175000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR MKJ')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="producto">
+      <img src="img kejoma 6.png" alt="KEJOMA JR Good Pro">
+
+      <div class="info">
+        <h3>KEJOMA JR Good Pro</h3>
+        <p class="precio">$170.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Good Pro</h4>
+          <p>Equilibrio entre rendimiento, estilo y comodidad.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Good Pro',170000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Good Pro')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="producto">
+      <img src="img kejoma 7.png" alt="KEJOMA JR Repro">
+
+      <div class="info">
+        <h3>KEJOMA JR Repro</h3>
+        <p class="precio">$178.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Repro</h4>
+          <p>Diseño deportivo con alto rendimiento y durabilidad.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Repro',178000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Repro')">❤️ Favorito</button>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="producto">
+      <img src="img kejoma 8.png" alt="KEJOMA JR Mate">
+
+      <div class="info">
+        <h3>KEJOMA JR Mate</h3>
+        <p class="precio">$150.000</p>
+      </div>
+      <div class="tallas">
+  <p>Tallas disponibles:</p>
+  <span>38</span>
+  <span>39</span>
+  <span>40</span>
+  <span>41</span>
+  <span>42</span>
+</div>
+
+      <div class="overlay">
+        <div class="overlay-content">
+          <h4>KEJOMA JR Mate</h4>
+          <p>Modelo ligero, cómodo y perfecto para uso diario.</p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button onclick="agregarCarrito('KEJOMA JR Mate',150000)">Agregar</button>
+        <button class="btn-fav" onclick="agregarFavoritoBtn(this,'KEJOMA JR Mate')">❤️ Favorito</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- BOTÓN RECIBO -->
+<button id="btn-recibo" onclick="descargarPDF()">🧾</button>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-contenedor">
+
+    <!-- 🏢 EMPRESA -->
+    <div class="footer-col">
+      <h3>KEJOMA</h3>
+      <p>Tu pasión, nuestro equipo.</p>
+      <p>Tienda deportiva especializada en calzado y ropa deportiva.</p>
+    </div>
+
+    <!-- 📍 LOCALES -->
+    <div class="footer-col">
+      <h3>Locales</h3>
+      <p>📍 Bogotá - Centro</p>
+      <p>📍 Medellín - El Poblado</p>
+      <p>📍 Cali - Norte</p>
+    </div>
+
+    <!-- 📞 CONTACTO -->
+    <div class="footer-col">
+      <h3>Contacto</h3>
+      <p>📞 +57 300 123 4567</p>
+      <p>📞 +57 310 987 6543</p>
+      <p>📧 kejoma@gmail.com</p>
+    </div>
+
+    <!-- 🌐 REDES -->
+    <div class="footer-col">
+      <h3>Síguenos</h3>
+
+      <p>
+        <a href="https://www.facebook.com/" target="_blank">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+      </p>
+
+      <p>
+        <a href="https://wa.me/573001234567" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- COPYRIGHT (FUERA DEL CONTENEDOR) -->
+  <div class="footer-copy">
+    <p>© 2026 KEJOMA - Todos los derechos reservados</p>
+  </div>
+
+</footer>
+
+</body>
+</html>
